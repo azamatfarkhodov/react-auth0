@@ -1,5 +1,5 @@
-import React, { createContext, useState, useEffect, useContext } from 'react';
-import createAuth0Client from '@auth0/auth0-spa-js';
+import React, { createContext, useState, useEffect, useContext } from "react";
+import createAuth0Client from "@auth0/auth0-spa-js";
 
 export const Auth0Context = createContext();
 export const useAuth0 = () => useContext(Auth0Context);
@@ -15,16 +15,16 @@ export function Auth0Provider({ children }) {
 
     async function initAuth0() {
       const auth0 = await createAuth0Client({
-        domain: 'dev-teqc2k0i.us.auth0.com',
-        client_id: 'MZCnr7KeJbfh0SEz0kSi1263AtTnaZgL',
+        domain: "dev-teqc2k0i.us.auth0.com",
+        client_id: "MZCnr7KeJbfh0SEz0kSi1263AtTnaZgL",
         redirect_uri: window.location.origin,
       });
       setAuth0Client(auth0);
 
       // handle redirect when user comes back
       if (
-        window.location.search.includes('code=') &&
-        window.location.search.includes('state=')
+        window.location.search.includes("code=") &&
+        window.location.search.includes("state=")
       ) {
         try {
           await auth0.handleRedirectCallback();

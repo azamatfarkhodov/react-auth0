@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Calistoga&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Calistoga&display=swap");
 
 * {
   box-sizing: border-box;
@@ -15,33 +15,27 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Calistoga', cursive;
-}
-
-.app {
-  cursor: url('https://i.imgur.com/NBIhMDc.png'), auto;
+  font-family: "Calistoga", cursive;
 }
 
 .site-header {
-  margin-bottom: auto;
-  position: fixed;
-  width: 100%;
-  left: 0;
-  right: 0;
-  top: 0;
+  background-color: #4dc0b5;
   text-align: center;
   display: flex;
   justify-content: space-between;
   padding: 10px 20px;
-  background: rgba(255, 255, 255, 0.2);
+}
+
+.links {
+  margin-top: 15px;
 }
 
 .site-header a,
-.site-header button {
+.site-header p {
   display: inline-block;
   padding: 4px 8px;
   font-size: 18px;
-  font-family: 'Calistoga', cursive;
+  font-family: "Calistoga", cursive;
   color: #333;
   margin-right: 8px;
   text-decoration: none;
@@ -51,7 +45,7 @@ h6 {
 }
 
 .site-header a:hover,
-.site-header button:hover {
+.site-header p:hover {
   color: rgb(31, 132, 80);
 }
 
@@ -60,9 +54,7 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #104826;
-  background-image: url('https://images.unsplash.com/photo-1505990941976-fa5c0b5a43f1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');
-  background-size: cover;
+  background-color: #4dc0b5;
 }
 
 .page > div {
@@ -84,12 +76,222 @@ h6 {
   line-height: 1;
 }
 
-.dashboard {
+.main-trivia-app {
+  margin: 0;
+  padding: 0;
+  font-size: 19px;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #454545;
+  background-color: #4dc0b5;
+}
+
+.trivia-app {
+  max-width: 500px;
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+
+.streak-checker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.streak-checker progress {
+  margin: 0;
+}
+
+/* header section ---------------------- */
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.category-selector {
+  max-width: 60%;
+}
+
+.category-selector select {
+  font-size: 16px;
+  width: 100%;
+}
+
+.category-selector p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.scoreboard {
+  display: flex;
+  align-items: center;
+  text-align: right;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.scoreboard > div:first-child {
+  margin-right: 25px;
+}
+
+.scoreboard .wrong {
+  color: rgb(211, 79, 79);
+}
+
+.scoreboard .correct {
+  color: rgb(63, 162, 63);
+}
+
+.scoreboard strong {
+  color: #555;
+  font-size: 40px;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.result-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #104826;
-  background-image: url('https://images.unsplash.com/photo-1506466010722-395aa2bef877?ixlib=rb-1.2.1&auto=format&fit=crop&w=2376&q=80');
-  background-size: cover;
+}
+
+.result-modal .overlay {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.result-modal-content {
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  padding: 30px;
+  width: 400px;
+  margin: 0 auto;
+  max-width: 90%;
+  text-align: center;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.result-modal.is-correct h3 {
+  color: rgb(63, 162, 63);
+}
+
+.result-modal.is-wrong h3 {
+  color: rgb(211, 79, 79);
+}
+
+.result-modal-content h3 {
+  font-size: 30px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.result-modal-content .correct-answer {
+  margin-bottom: 20px;
+}
+
+.result-modal-content .correct-answer small {
+  color: #777;
+}
+
+.result-modal-content .correct-answer strong {
+  font-size: 40px;
+}
+
+/* main section ---------------------- */
+
+.question-main {
+  background: #fff;
+  border-radius: 10px;
+  padding: 2.5rem;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  min-width: 500px;
+  max-width: 90%;
+  min-height: 350px;
+  display: flex;
+  align-items: center;
+}
+
+.question {
+  width: 100%;
+}
+
+.question h2 {
+  margin-top: 0;
+  font-size: 16px;
+  font-weight: normal;
+  text-align: center;
+}
+
+button {
+  display: block;
+  width: 100%;
+  margin-bottom: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #195e5b;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  padding: 0.8rem;
+  border-width: 1px;
+  border-radius: 0.25rem;
+  border-color: #38a89d;
+  background-color: #4dc0b5;
+  transition: 0.2s ease all;
+  line-height: 1;
+}
+
+button:hover {
+  background-color: #a0f0ed;
+  box-shadow: 2px 5px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* footer section ---------------------- */
+
+.question-footer {
+  margin-top: 15px;
+  text-align: right;
+}
+
+.question-footer button {
+  background: #ccc;
+  border-color: #aaa;
+  color: #777;
+  width: auto;
+  margin-left: auto;
+  font-size: 12px;
+  padding: 10px 20px;
+}
+@media only screen and (max-width: 768px) {
+  .site-header {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 534px) {
+  .main-trivia-app {
+    display: flex;
+    flex-direction: column;
+  }
 }

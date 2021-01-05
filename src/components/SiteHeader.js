@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { Auth0Context } from '../contexts/auth0-context';
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { Auth0Context } from "../contexts/auth0-context";
 
 export default function SiteHeader() {
   const { isAuthenticated, login, logout, user } = useContext(Auth0Context);
@@ -8,9 +8,9 @@ export default function SiteHeader() {
   return (
     <div className="site-header">
       {/* stuff on the left */}
-      <div>
+      <div className="links">
         <Link to="/">Home</Link>
-        <Link to="/dashboard">Dashboard</Link>
+        <Link to="/trivia">Trivia</Link>
       </div>
 
       {/* stuff on the right */}
@@ -18,8 +18,8 @@ export default function SiteHeader() {
         {!isAuthenticated && <button onClick={login}>Login</button>}
         {isAuthenticated && user && (
           <>
-            <button>{user.name}</button>
-            <button onClick={logout}>Logout</button>
+            <p>{user.name}</p>
+            <p onClick={logout}>Logout</p>
           </>
         )}
       </div>
